@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import MovieList from "./newComp/movieList";
+import Filter from "./newComp/filter";
+import MovieData from "./newComp/movie";
+import { Route,Routes,Outlet } from "react-router-dom";
+import MovieDetals from "./newComp/movieDetails";
+import NavBar from "./newComp/navBar";
+import Home from "./newComp/home";
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    return ( 
+        <div>
+            <NavBar />
+            <Routes>
+                <Route path="/" element={<Home />} /> 
+                <Route path="/movieList" element={<MovieList />} />
+                <Route path="/movieList/movie/:id" element={<MovieDetals MovieData={MovieData}/>}/>
+            </Routes>
+        </div>
+     );
 }
 
 export default App;
